@@ -11,6 +11,17 @@ export class ProductsModel{
      static get(){
         return products
     }
+
+    static add(bodyObj){
+        const newProduct = new ProductsModel(
+            products.length+1,
+            bodyObj.name,
+            bodyObj.desc,
+            bodyObj.price,
+            bodyObj.imageURL,
+        )
+        products.push(newProduct)
+    }
 }
 let products =[
         new ProductsModel(1,"product-1","Description for product 1", 19.99, "https://picsum.photos/id/237/200/300"),
