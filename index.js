@@ -2,6 +2,7 @@ import express, { urlencoded } from "express"
 import ProductController from "./src/controller/products.controller.js"
 import path from "path"
 import ejsLayouts from "express-ejs-layouts"
+import validateProduct from "./src/middlewares/validateProduct.middleware.js"
 const server = express()
 server.use(express.urlencoded({extended:true}))
 server.set("view engine","ejs")
@@ -10,7 +11,7 @@ server.use(ejsLayouts)
 
 const productcontroller = new ProductController()
 server.get("/",productcontroller.getProducts)
-server.post('/',productcontroller.newData)
+server.post('/',validateProduct,productcontroller.newData)
 server.get("/new", productcontroller.addForm);
 server.use(express.static("src/view"))
 server.listen(3100,()=>{
