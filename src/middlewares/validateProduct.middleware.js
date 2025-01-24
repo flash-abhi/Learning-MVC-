@@ -10,7 +10,6 @@ const validateProduct = (req,res,next)=>{
     try{
         const validUrl = new URL(imageUrl)
     }catch(err){
-
         errors.push("Enter a valid URL")
     }
     if(errors.length>0){
