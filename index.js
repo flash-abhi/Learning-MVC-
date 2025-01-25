@@ -8,13 +8,13 @@ server.use(express.urlencoded({extended:true}))
 server.set("view engine","ejs")
 server.set("views",path.join(path.resolve(),"src","view"))
 server.use(ejsLayouts)
-
+server.use(express.static("src/public"))
 const productcontroller = new ProductController()
 server.get("/",productcontroller.getProducts)
 server.post('/',validateProduct,productcontroller.newData)
 server.get("/new", productcontroller.addForm);
 server.get("/update-product/:id",productcontroller.getupdateProductById)
-server.get('/delete-product/:id',productcontroller.deleteProduct)
+server.post('/delete-product/:id',productcontroller.deleteProduct)
 server.post("/update-product",productcontroller.updateProduct)
 server.use(express.static("src/view"))
 server.listen(3100,()=>{
