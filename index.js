@@ -13,6 +13,8 @@ const productcontroller = new ProductController()
 server.get("/",productcontroller.getProducts)
 server.post('/',validateProduct,productcontroller.newData)
 server.get("/new", productcontroller.addForm);
+server.get("/update-product/:id",productcontroller.getupdateProductById)
+server.post("/update-product",productcontroller.updateProduct)
 server.use(express.static("src/view"))
 server.listen(3100,()=>{
     console.log("port running on 3100")

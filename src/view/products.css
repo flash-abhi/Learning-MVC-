@@ -4,3 +4,30 @@ img{
 .container{
     width: 100%;
 }
+body {
+    height: 100vh;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+.error-card {
+    max-width: 600px;
+    margin: auto auto;
+    margin-top: 8%;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    /* box-shadow: 4px 4px 24px rgba(0, 0, 0, 0.1); */
+    background-color: #fff;
+}
+.error-card h1 {
+    font-size: 6rem;
+    color: #dc3545;
+}
+.error-card p {
+    font-size: 1.25rem;
+    color: #6c757d;
+}
+.error-card a {
+    margin-top: 1rem;
+    text-decoration: none;
+}
