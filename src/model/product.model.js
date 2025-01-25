@@ -11,7 +11,6 @@ export class ProductsModel{
      static get(){
         return products
     }
-    
 
     static add(bodyObj){
         const newProduct = new ProductsModel(
@@ -26,7 +25,10 @@ export class ProductsModel{
     static update(UpdateProduct){
         const index = products.findIndex(p => p.id == UpdateProduct.id) 
         products[index] = UpdateProduct
-
+    }
+    static delete(id){
+        const index = products.findIndex((p) => p.id == id)
+        products.splice(index,1)
     }
     static getById(id){
         return products.find(p => p.id == id)

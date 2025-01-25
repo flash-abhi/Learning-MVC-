@@ -11,6 +11,12 @@ export default class ProductController{
     addForm(req,res,next){
         res.render('new-product',{errorMessage:null})
     }
+    newData(req,res,next){
+        // console.log(req.body)
+        ProductsModel.add(req.body)
+        const products = ProductsModel.get()
+        res.render("products",{products:products})
+    }
     getupdateProductById(req,res,next){
         const id = req.params.id
        const productFound = ProductsModel.getById(id)
@@ -26,11 +32,14 @@ export default class ProductController{
         const product = ProductsModel.get()
         res.render("products",{products:product})
     }
-    newData(req,res,next){
-        // console.log(req.body)
-        ProductsModel.add(req.body)
-        const products = ProductsModel.get()
-        res.render("products",{products:products})
-        
+    deleteProduct(req,res){
+      const id = req.params.id
+      const productFound = ProductsModel.getById(id)
+        if(!productFound){
+          return res.status(401).render("error-page")
+        }
+       ProductsModel.delete(id)
+       const product = ProductsModel.get()
+       res.render("products",{products:product})
     }
 }
