@@ -3,6 +3,7 @@ import {ProductsModel} from "../model/product.model.js"
 import { url } from "inspector"
 export default class ProductController{
     getProducts(req,res){
+        console.log("message")
         const products = ProductsModel.get()
         res.render("products",{products:products})
     //     console.log(products)
@@ -13,7 +14,11 @@ export default class ProductController{
     }
     newData(req,res,next){
         // console.log(req.body)
-        ProductsModel.add(req.body)
+        console.log("product is added")
+        const {name,desc,price} = req.body
+        const imageUrl = "images/"+req.file.filename
+        console.log(imageUrl)
+        ProductsModel.add(name,desc,price,imageUrl)
         const products = ProductsModel.get()
         res.render("products",{products:products})
     }
@@ -40,6 +45,7 @@ export default class ProductController{
         }
        ProductsModel.delete(id)
        const product = ProductsModel.get()
-       res.render("products",{products:product})
+    //    res.render("products",{products:product})
+        return res.redirect("/")
     }
 }

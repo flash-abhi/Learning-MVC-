@@ -12,13 +12,13 @@ export class ProductsModel{
         return products
     }
 
-    static add(bodyObj){
+    static add(name,desc,price,imageUrl){
         const newProduct = new ProductsModel(
             products.length+1,
-            bodyObj.name,
-            bodyObj.desc,
-            bodyObj.price,
-            bodyObj.imageURL,
+            name,
+            desc,
+            price,
+            imageUrl,
         )
         products.push(newProduct)
     }
