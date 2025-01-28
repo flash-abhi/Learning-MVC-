@@ -33,6 +33,8 @@ export class ProductsModel{
     static getById(id){
         return products.find(p => p.id == id)
     }
+
+   
 }
 let products =[
         new ProductsModel(1,"Iphone-15","Experience the iPhone 15 your dynamic companion. Dynamic Island ensures you stay connected, bubbling up alerts seamlessly while you're busy.", 60099.99, "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6525/6525459_sd.jpg"),
