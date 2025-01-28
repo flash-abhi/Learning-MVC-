@@ -3,7 +3,7 @@ import {ProductsModel} from "../model/product.model.js"
 import { url } from "inspector"
 export default class ProductController{
     getProducts(req,res){
-        console.log("message")
+        // console.log("message")
         const products = ProductsModel.get()
         res.render("products",{products:products})
     //     console.log(products)
