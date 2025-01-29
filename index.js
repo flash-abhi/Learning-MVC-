@@ -7,6 +7,8 @@ import validateProduct from "./src/middlewares/validateProduct.middleware.js"
 import {uploadFile}  from "./src/middlewares/fileupload.middleware.js"
 import session from "express-session"
 import { auth } from "./src/middlewares/auth.middleware.js"
+import cookieParser from "cookie-parser"
+import { setLastVisit } from "./src/middlewares/lastVisit.middleware.js"
 const server = express()
 server.use(express.urlencoded({extended:true}))
 server.set("view engine","ejs")
@@ -20,6 +22,8 @@ server.use(session({
     saveUninitialized:true,
     cookie:{secure:false}
 }))
+server.use(cookieParser())
+server.use(setLastVisit)
 const productcontroller = new ProductController()
 const usercontroller = new UserController()
 server.get("/",auth,productcontroller.getProducts)
