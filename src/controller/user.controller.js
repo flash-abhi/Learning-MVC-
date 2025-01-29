@@ -33,8 +33,10 @@ export default class UserController{
                     console.log(err)
                 }
                 else{
+                    res.clearCookie('lastVisit')
                     res.redirect('/login')
                 }
+                
             })
         }
 }
